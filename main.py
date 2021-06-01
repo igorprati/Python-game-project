@@ -1,139 +1,130 @@
 from os import system
 from tempo import Tempo
 from personagem import Personagem
+from personagem import tempo
+from time import sleep
 
-
-if __name__ == "__main__": ## FORÇA O PROGRAMA A RODAR APENAS NA MAIN
-    tempo = Tempo()
+if __name__ == "__main__":  # FORÇA O PROGRAMA A RODAR APENAS NA MAIN
     personagem = Personagem()
+
+    # DEFINE A FUNÇÃO TUTORIAL
+    def tutorial():
+        system('cls')
+        print('------------- TUTORIAL DO PROGRAMA -------------')
+        print('''
+        Este é um simulador de rotina diária da vida de uma
+        pessoa. Para começar, você poderá escolher seus atri-
+        butos que mudarão o rumo da sua história.
+        ''')
+        input('Aperte ENTER para continuar o tutorial...\n')
+        system('cls')
+        print('------------- TUTORIAL DO PROGRAMA -------------\n')
+        print(tempo)
+        personagem.status()
+        print('''
+        Acima você encontra sua barra de status. Nela, você
+        encontra o dia, hora atual, sua saúde e o dinheiro
+        que você carrega na carteira.\n''')
+        input('Aperte ENTER para continuar o tutorial...\n')
+        system('cls')
+        print('------------- TUTORIAL DO PROGRAMA -------------\n\n')
+        print(
+            '[ 1 ] Estudar\n[ 2 ] Trabalhar\n[ 3 ] Aumentar energia\n[ 4 ] Banco\n[ 0 ] Ir dormir')
+        print('''
+        Este é o menu principal. É nele que você poderá es-
+        colher suas ações teclando o numero correspondente
+        de cada item.''')
+        input('\nAperte ENTER para continuar o tutorial...\n')
+        system('cls')
+        print('------------- TUTORIAL DO PROGRAMA -------------\n')
+        print('''
+        A cada ação tomada no jogo, existem consequências
+        benéficas e maléficas para seu personagem. Por exem-
+        plo: ao ir à ACADEMIA você recupera sua energia, po-
+        rém perde dinheiro e tempo. Você precisa escolher
+        suas ações com cuidado e inteligência.''')
+        input('\nAperte ENTER para continuar o tutorial...\n')
+        system('cls')
+        input('Vamos começar?\n\nAperte ENTER para começar o jogo! ->')
 
     # MENU PRINCIPAL
     while True:
-        system('cls')
-        print(tempo)
-        print('')
-        print('Escolha o que você quer fazer hoje:\n\n[ 1 ] Estudar\n[ 2 ] Trabalhar\n[ 3 ] Aumentar saúde\n[ 0 ] Ir dormir\n')
+        personagem.menuPrincipal()
         opcao = int(input('Escolha uma opção -> '))
-    
+
         # LAÇO DE REPETIÇÃO DOS MENUS SECUNDARIOS
         while True:
             # [ 1 ] ESTUDAR
             if opcao == 1:
-                system('cls')
-                print('O que você quer estudar?\n\n[ 1 ] HTML\n[ 2 ] Java\n[ 0 ] Menu principal\n')
-                escolha = int(input('Escolha uma opção -> '))
-                # [ 1 ] HTML
-                if escolha == 1:
-                    system('cls')
-                    if tempo.horas < 21:
-                        tempo.avancarTempo(60*3)
-                        print(tempo)
-                        personagem.estudarHtml()
-                    else:
-                        print(f'São {tempo.horas}:{tempo.minutos} horas.\n\nVocê não possui tempo suficiente para fazer esta atividade. Você precisa ir dormir.')
-                        input('\nPressione ENTER para continuar ...')
-                        break
-                    input('\nPressione ENTER para continuar ...')
-                # [ 2 ] JAVA
-                elif escolha == 2:
-                    system('cls')
-                    if tempo.horas < 21:
-                        personagem.estudarJava()
-                        tempo.avancarTempo(60*3)
-                        print(tempo)
-                    else:
-                        print(f'São {tempo.horas}:{tempo.minutos} horas.\n\nVocê não possui tempo suficiente para fazer esta atividade. Você precisa ir dormir.')
-                        input('\nPressione ENTER para continuar ...')
-                        break
-                    input('\nPressione ENTER para continuar ...')
-                elif escolha == 0:
-                    system('cls')
+                personagem.status()
+                personagem.menuEstudar()
+                opcao = int(input('Escolha uma opção -> '))
+                if opcao == 0:
                     break
                 else:
-                    print('** Escolha apenas entre as opções disponíveis **')
-                    input('\nAperte ENTER para continuar...')
-                    
+                    personagem.estudar(opcao)
 
             # [ 2 ] TRABALHAR
             elif opcao == 2:
-                system('cls')
-                if tempo.horas < 16:
-                    personagem.trabalhar()
-                    if personagem.trabalho == True:
-                        tempo.avancarTempo(60*8)
-                        print(tempo)
-                        print(personagem)
+                personagem.status()
+                if personagem.trabalhoDia == 0:
+                    if tempo.horas < 16:
+                        if personagem.expHtml >= 2 or personagem.expJava >= 2:
+                            personagem.trabalhar()
+                            input('Aperte ENTER para continuar...')
+                            break
+                        else:
+                            print(
+                                f'\nVocê precisa de nível 02 em Java ou HTML para trabalhar!\n')
+                            input('Aperte ENTER para continuar...')
+                            break
                     else:
-                        input('\nPressione ENTER para continuar ... ')
+                        print(
+                            '\nVocê não tem tempo suficiente para realizar esta tarefa.\n')
+                        input('Aperte ENTER para continuar...')
                         break
                 else:
-                    print(f'São {tempo.horas}:{tempo.minutos} horas.\n\nVocê não possui tempo suficiente para fazer esta atividade. Você precisa ir dormir.')
-                    input('\nPressione ENTER para continuar ...')
+                    print('\nVocê já trabalhou hoje! Tente dormir e voltar amanhã...\n')
+                    input('Aperte ENTER para continuar...')
                     break
-                input('\nPressione ENTER para continuar ... ')
-                break
-            
-            # AUMENTAR SAÚDE
+
+            # [ 3 ] AUMENTAR ENERGIA
             elif opcao == 3:
-                system('cls')
-                print('Escolha uma opção:\n\n[ 1 ] Comida saudável\n[ 2 ] Academia\n[ 3 ] Corrida ao ar livre\n[ 0 ] Menu Principal\n')
-                escolha = int(input('Escolha uma opção acima -> '))
-                # COMIDA SAUDÁVEL
-                if escolha == 1:
-                    personagem.comidaSaudavel()
-                    tempo.avancarTempo(30)
-                    print(tempo)
-                    print(personagem)
-                    input('\nDigite ENTER para continuar...')
-                # ACADEMIA
-                elif escolha == 2:
-                    personagem.academia()
-                    tempo.avancarTempo(60*2)
-                    print(tempo)
-                    print(personagem)
-                    input('\nDigite ENTER para continuar...')
-                # CORRIDA AO AR LIVRE
-                elif escolha == 3:
-                    personagem.corrida()
-                    tempo.avancarTempo(60*2)
-                    print(tempo)
-                    print(personagem)
-                    input('\nDigite ENTER para continuar...')
-                # MENU PRINCIPAL
-                elif escolha == 0:
+                personagem.status()
+                personagem.menuEnergia()
+                opcao = int(input('Escolha uma opção acima -> '))
+                if opcao == 0:
                     break
                 else:
-                    system('cls')
-                    print('\n** Escolha apenas entre as opções disponíveis! **')
-                    input('\nDigite ENTER para continuar...')
-            
-            # IR DORMIR
+                    personagem.aumentarEnergia(opcao)
+                input('\nDigite ENTER para continuar...')
+                break
+
+            # [ 4 ] BANCO
+            elif opcao == 4:
+                personagem.status()
+                print('[ 1 ] Depositar\n[ 2 ] Sacar\n[ 3 ] Extrato\n[ 0 ] Sair\n')
+                opcao = int(input('Escolha uma opção -> '))
+                if opcao == 0:
+                    break
+                else:
+                    personagem.irAobanco(opcao)
+                input('\nDigite ENTER para continuar...')
+
+            # [ 0 ] TUTORIAL
             elif opcao == 0:
-                tempo.dormir()
+                tutorial()
+                break
+
+            # [ 5 ] IR DORMIR
+            elif opcao == 5:
+                personagem.dormir()
                 print('')
-                print(personagem)
                 input('\nPressione ENTER para ACORDAR...')
                 break
-                
+
             else:
                 system('cls')
                 print('Digite apenas números das opções')
                 input('\nDigite ENTER para continuar...')
                 break
-            
-
-
-                    
-
-
-
-
-
-
-
-        
-    
-
-    
-
-
