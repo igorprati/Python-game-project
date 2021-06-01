@@ -1,7 +1,7 @@
 from os import system
 from tempo import Tempo
 from personagem import Personagem
-from personagem import tempo
+from personagem import tempo # importa a variável tempo instanciada em Tempo()
 from time import sleep
 
 if __name__ == "__main__":  # FORÇA O PROGRAMA A RODAR APENAS NA MAIN
@@ -56,21 +56,26 @@ if __name__ == "__main__":  # FORÇA O PROGRAMA A RODAR APENAS NA MAIN
         while True:
             # [ 1 ] ESTUDAR
             if opcao == 1:
-                personagem.status()
-                personagem.menuEstudar()
-                opcao = int(input('Escolha uma opção -> '))
-                if opcao == 0:
-                    break
+                if tempo.horas <= 21:  ## Usuário só poderá estudar caso haja tempo necessário para a realização da tarefa
+                    personagem.status()
+                    personagem.menuEstudar() # Mostra o menu de opções "ESTUDAR"
+                    opcao = int(input('Escolha uma opção -> '))
+                    if opcao == 0: # Sair do menu
+                        break
+                    else:
+                        personagem.estudar(opcao) # Executa o método "estudar" do personagem
                 else:
-                    personagem.estudar(opcao)
+                    print(f'São {tempo.horas}:{tempo.minutos}.\nVocê não possui tempo suficiente para esta tarefa. Tente amanhã!')
+                    input('Pressione ENTER para continuar...')
+                    break
 
             # [ 2 ] TRABALHAR
             elif opcao == 2:
                 personagem.status()
-                if personagem.trabalhoDia == 0:
-                    if tempo.horas < 16:
-                        if personagem.expHtml >= 2 or personagem.expJava >= 2:
-                            personagem.trabalhar()
+                if personagem.trabalhoDia == 0: # Se o usuário ainda não trabalhou, o contador permanece em ZERO e ele poderá trabalhar. Caso contrário será bloqueado.
+                    if tempo.horas < 16: # se houver tempo hábil para trabalhar, será executado o método
+                        if personagem.expHtml >= 2 or personagem.expJava >= 2: # caso o jogador possua experiência necessária, será executado o método
+                            personagem.trabalhar() # Executa o método "Trabalhar" do personagem
                             input('Aperte ENTER para continuar...')
                             break
                         else:
@@ -90,39 +95,45 @@ if __name__ == "__main__":  # FORÇA O PROGRAMA A RODAR APENAS NA MAIN
 
             # [ 3 ] AUMENTAR ENERGIA
             elif opcao == 3:
-                personagem.status()
-                personagem.menuEnergia()
-                opcao = int(input('Escolha uma opção acima -> '))
-                if opcao == 0:
+                if tempo.horas < 24: # caso ainda não seja 24 horas, o método será executado
+                    personagem.status()
+                    personagem.menuEnergia() # mostra o menu de Energia
+                    opcao = int(input('Escolha uma opção acima -> '))
+                    if opcao == 0: # sai do menu Energia
+                        break
+                    else:
+                        personagem.aumentarEnergia(opcao) # executa o método baseado no INPUT do usuário
+                    input('\nDigite ENTER para continuar...')
                     break
                 else:
-                    personagem.aumentarEnergia(opcao)
-                input('\nDigite ENTER para continuar...')
-                break
+                    print('Você não possui tempo suficiente para estar tarefa. Volte amanhã.')
+                    input('Pressione ENTER para continuar.')
+                    break
 
             # [ 4 ] BANCO
             elif opcao == 4:
                 personagem.status()
-                print('[ 1 ] Depositar\n[ 2 ] Sacar\n[ 3 ] Extrato\n[ 0 ] Sair\n')
+                print('[ 1 ] Depositar\n[ 2 ] Sacar\n[ 3 ] Extrato\n[ 0 ] Sair\n') # mostra o menu do BANCO
                 opcao = int(input('Escolha uma opção -> '))
-                if opcao == 0:
+                if opcao == 0: # sai do menu BANCO
                     break
                 else:
-                    personagem.irAobanco(opcao)
+                    personagem.irAobanco(opcao) # Executa o método baseado no INPUT do usuário
                 input('\nDigite ENTER para continuar...')
 
             # [ 0 ] TUTORIAL
             elif opcao == 0:
-                tutorial()
+                tutorial() # executa a função TUTORIAL
                 break
 
             # [ 5 ] IR DORMIR
             elif opcao == 5:
-                personagem.dormir()
+                personagem.dormir() # Executa a função dormir
                 print('')
                 input('\nPressione ENTER para ACORDAR...')
                 break
-
+            
+            # CASO O USUÁRIO DIGITE OUTRO NÚMERO FORA DAS OPÇÕES
             else:
                 system('cls')
                 print('Digite apenas números das opções')
