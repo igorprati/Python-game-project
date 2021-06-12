@@ -83,7 +83,7 @@ Existem 9 diferentes níveis de programação que resulta em melhores salários:
 <img src='https://i.imgur.com/R9OFsci.png' width='500px'></img>
 
 Equipe do Projeto: 
-<div>Igor Prati</div
+<div><a href='https://github.com/CodeThales' target='_blank'>Igor Prati</a></div>
 <div><a href='https://github.com/CodeThales' target='_blank'>Thales Ribeiro</a></div>
 <div><a href='https://www.linkedin.com/in/pedro-santos-15630a207/' target='_blank'>Pedro Santos</a></div>
 
