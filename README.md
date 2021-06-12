@@ -1,2 +1,2 @@
 ## Python Game Project
- Jogo criado ao final do Módulo 01 - Python da BlueEdtech
+ Este projeto foi desenvolvido ao final do <b>Módulo I</b> do Curso de Programação da BlueEdtech.
