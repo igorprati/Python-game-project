@@ -1,9 +1,9 @@
 # Python Game Project
- Este projeto foi desenvolvido ao final do <b>Módulo I</b> do Curso de Programação da <a href='https://blueedtech.com.br/'>Blue Edtech 💙</a>
+ Este projeto foi desenvolvido ao final do <b>Módulo I</b> do Curso de Programação da <a href='https://blueedtech.com.br/' target='_blank'>Blue Edtech 💙</a>
  
  ## Objetivos do projeto
  Deveríamos fazer um jogo de ficção interativa em linguagem Python utilizando os recursos de laço de repetição, estruturas condicionais, programação orientada a objetos, funções. Neste tipo de jogo, é simulado a rotina de uma pessoa onde ela pode interagir com o ambiente e objetos através de comandos no teclado, gerando modificações ao curso de suas escolhas. 
- ## Para conhecer melhor nosso Game, veja um vídeo explicativo <a href='https://youtu.be/sfGLBAtYbrs'>CLICANDO AQUI</a>
+ ### Para conhecer melhor nosso Game, veja um vídeo explicativo <a href='https://youtu.be/sfGLBAtYbrs' target='_blank'>CLICANDO AQUI</a>
  
  <img src='https://i.imgur.com/ToeprUy.jpg' width='300px'></img>
  
@@ -78,7 +78,9 @@ Existem 9 diferentes níveis de programação que resulta em melhores salários:
 
 # Em resumo...
 
+<p>Este projeto nos possibilitou concluir o Módulo I de Lógica de Programação e foi muito importante para nosso crescimento como profissional, botando a mão na massa, encontrando erros, solucionando problemas e chegando na melhor versão do programa que podíamos no período de 4 dias e com menos de 30 dias de curso.</p>
 
+<img src='https://i.imgur.com/R9OFsci.png' width='500px'></img>
 
 Equipe do Projeto: 
 <div>Igor Prati</div
