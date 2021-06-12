@@ -3,6 +3,7 @@
  
  ## Objetivos do projeto
  Deveríamos fazer um jogo de ficção interativa em linguagem Python utilizando os recursos de laço de repetição, estruturas condicionais, programação orientada a objetos, funções. Neste tipo de jogo, é simulado a rotina de uma pessoa onde ela pode interagir com o ambiente e objetos através de comandos no teclado, gerando modificações ao curso de suas escolhas. 
+ ## Para conhecer melhor nosso Game, veja um vídeo explicativo <a href='https://youtu.be/sfGLBAtYbrs'>CLICANDO AQUI</a>
  
  <img src='https://i.imgur.com/ToeprUy.jpg' width='300px'></img>
  
@@ -13,6 +14,7 @@
  - Cada ação gasta uma quantidade de energia, avança o tempo e poderá (ou não) gastar dinheiro.
  - O personagem não poderá executar uma ação caso essa ultrapasse 24h do dia ou 0 de energia.
  - O peronagem não poderá trabalhar até que consiga status de "Programador Júnior", que é obtido estudando.
+ - O personagem só poderá trabalhar 01 (uma) vez ao dia.
  - A cada vez que estuda, recebe 0.5 exp e será considerado "Programador Júnior" ao alcançar 2.0 exp.
  - Poderá restaurar energia comprando itens ou ir dormir para iniciar o próximo dia.
  
@@ -53,11 +55,35 @@ Para este menu, o personagem possui 02 (duas) opções:
 ```
 A cada vez que estuda, o status do personagem muda para:
 ```
+<img src='https://i.imgur.com/o9vcpWv.png' width='350px'></img>
 - -15 energia
 - +0.5 experiência nos estudos
 - Horário avança 3h
+### Após algumas horas estudando...
+Finalmente me tornei um Programador Júnior e posso começar a trabalhar. Vamos falar disso no próximo tópico. <br>
+ <img src='https://i.imgur.com/CY33PkQ.png' width='500px'></img>
+
+## Trabalho
+A cada vez que realiza esta ação, recebe seu salário, avança + 08h no relógio e tem a chance aleatória de ser assaltado voltando do trabalho, perdendo todo o seu dinheiro.
+
+```
+Existem 9 diferentes níveis de programação que resulta em melhores salários:
+
+- Nível 2.0 HTML ou Java == Programador Júnior == R$300
+- Nível 5.0 HTML ou Java == Programador Pleno == R$500
+- Nível 10.0 HTML ou Java == Programador Sênior == R$1.000
+- Nível 10.0 HTML e Java == Programador Sênior Full Stack == R$2.000
+
+```
+
+# Em resumo...
 
 
- 
+
+Equipe do Projeto: 
+<div>Igor Prati</div
+<div>Thales Ribeiro</div>
+<div>Pedro Santos</div
+
 
 
